@@ -39,3 +39,21 @@ console.log(uAge);   // 30
 1. ES6에서 지원하는 Iteration Protocol에서 사용
 2. 함수의 리턴 값으로 배열이나 객체로 리턴을 받을때 사용
 */
+
+let map = new Map();
+map.set('number', 123);
+map.set('string', 'test');
+
+for(let[key, value] of map) {
+    console.log(`key : ${key} and value : ${value}`);
+}
+
+function myFunc(): {result1: string, result2: string} {
+    let obj = {result1: string, result2: string};
+    obj.result1 = "test1";
+    obj.result2 = "test2";
+    return obj;
+}
+
+let {result1: re1, result2: re2} = myFunc();
+console.log(`first : ${re1} and second : ${re2}`);
