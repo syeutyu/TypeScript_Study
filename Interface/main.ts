@@ -41,3 +41,42 @@ child = {
 child는 현재 아무 타입도 정해지지않은 undefined상태이기에 값을 넣어도 에러가 납니다
 하지만 이 js코드에서 interface에 대한 선언은 나오지않은것을 보면 알수있듯이 TypeScript에서는 interface는 데이터 체크를 위해 사용합니다
 */
+
+
+interface Optional {
+    readonly name: string,
+    anyValue?: string
+
+    getName(): string
+}
+
+/*
+readonly 키워드는 해석그대로 변수의 데이터를 읽을수만 있다는 얘기로 처음 정의를하고 두번째 부터는 변수의 값을 변경이 불가하다 
+?와 같은 지정을 Optional 즉 값을 대입할수도 안할수도있는 정의 이다.
+
+*/
+function optionalPrint(object: Optional): void{
+    console.log(object.name);
+    console.log(object.anyValue);
+    console.log(object.getName())
+}
+
+let testObject: Optional = {
+    name: "Dayzen",
+    anyValue: "any",
+    getName: function(){
+        return this.name;
+    }
+}
+
+optionalPrint(testObject);
+
+interface myInterface {
+    (myName: string, myAge: number): void;
+}
+
+let interfaceFunction: myInterface = function(myName:string, myAge:number): void {
+    console.log(`이름 : ${myName}, 나이 : ${myAge}`);
+};
+
+interfaceFunction("홍길동",30);
