@@ -6,7 +6,7 @@ TypeScript에서 데이터 체크를 위한 방식으로 사용합니다
 
 interface Super {
     name: string,
-    age: number
+        age: number
 }
 
 let child: Super;
@@ -45,7 +45,7 @@ child는 현재 아무 타입도 정해지지않은 undefined상태이기에 값
 
 interface Optional {
     readonly name: string,
-    anyValue?: string
+        anyValue ? : string
 
     getName(): string
 }
@@ -55,7 +55,7 @@ readonly 키워드는 해석그대로 변수의 데이터를 읽을수만 있다
 ?와 같은 지정을 Optional 즉 값을 대입할수도 안할수도있는 정의 이다.
 
 */
-function optionalPrint(object: Optional): void{
+function optionalPrint(object: Optional): void {
     console.log(object.name);
     console.log(object.anyValue);
     console.log(object.getName())
@@ -64,7 +64,7 @@ function optionalPrint(object: Optional): void{
 let testObject: Optional = {
     name: "Dayzen",
     anyValue: "any",
-    getName: function(){
+    getName: function () {
         return this.name;
     }
 }
@@ -75,8 +75,25 @@ interface myInterface {
     (myName: string, myAge: number): void;
 }
 
-let interfaceFunction: myInterface = function(myName:string, myAge:number): void {
+let interfaceFunction: myInterface = function (myName: string, myAge: number): void {
     console.log(`이름 : ${myName}, 나이 : ${myAge}`);
 };
 
-interfaceFunction("홍길동",30);
+interfaceFunction("홍길동", 30);
+
+interface IndexInterface {
+    [idx: string]: string | number;
+    [ad: number]: string | number;
+}
+
+let index: IndexInterface = {
+    myName: "Dayzen",
+    myAddress: 123
+}
+
+let keys = Object.keys(index);
+
+for (let i = 0; i < keys.length; i++) {
+    console.log(keys[i]); // key
+    console.log(index[keys[i]]); // value
+}
